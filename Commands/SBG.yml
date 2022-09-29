@@ -1,0 +1,7 @@
+---
+- name: SBD Commands
+  hosts: windows
+  tasks:
+    - name: Execute script
+    # Path of SBD.bat.bat file stored in Windows Host
+      win_command: '"C:\SBD.bat"

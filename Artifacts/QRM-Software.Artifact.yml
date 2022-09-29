@@ -1,0 +1,16 @@
+---
+ - hosts: windows
+   vars:
+     elements:
+       - QRM_BSM_16_1_2502CZ_Install.zip
+   tasks:
+   - name: Download artifact test
+     win_get_url:
+       url: your_artifact_url_here/"{{elements}}"
+       dest: E:\Support\QRM-Software\
+       url_username: your_username
+       url_password: your_api_key
+   - name:  Unzip
+     win_unzip:
+       src: E:\Support\QRM-Software\"{{elements}}"
+       dest: E:\Support\QRM-Software\

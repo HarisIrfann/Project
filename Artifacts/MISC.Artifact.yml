@@ -1,0 +1,41 @@
+---
+ - hosts: windows
+   vars:
+     artifacts:
+       - AcroRdrDCUpd1902120047.zip
+       - AdhocTool.zip
+       - Dataloader.zip
+       - db2clientV11.1.2fp2.zip
+       - ESP_R11_3_7_for_Windows_64.zip
+       - LRM-E.zip
+       - Microsoft OLE DB Driver 18.zip
+       - MSOFFICE2016.zip
+       - NetezzaDrv7219.zip
+       - pcl6-x64-6.6.5.23510.zip
+       - Bginfo.zip
+   tasks:
+   - name: Download artifact zip
+     win_get_url:
+       url: your_artifact_url_here/"{{artifacts}}"
+       dest: E:\Support\MISC\
+       url_username: your_username
+       url_password: your_api_key
+
+   - name: Download artifact nssm.exe
+     win_get_url:
+       url: your_artifact_url_here/nssm.exe
+       dest: E:\Support\MISC\
+       url_username: your_username
+       url_password: your_api_key 
+
+   - name: Download artifact ntrights.exe
+     win_get_url:
+       url: your_artifact_url_here/ntrights.exe
+       dest: E:\Support\MISC\
+       url_username: your_username
+       url_password: your_api_key        
+
+   - name: Unzip
+     win_unzip:
+       src: E:\Support\MISC\"{{artifacts}}"
+       dest: E:\Support\MISC\

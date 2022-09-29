@@ -1,0 +1,7 @@
+---
+- name: git clone
+  hosts: windows
+  tasks:
+    - name: Execute script
+    # Path of OfficeMSPClone.bat file stored in Windows Host
+      win_command: '"C:\OfficeMSPClone.bat"'

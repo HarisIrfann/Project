@@ -1,0 +1,18 @@
+---
+ - hosts: windows
+   vars:
+     items:
+       - SQL2016.zip
+       - SQL2016SP2.zip
+       - SQL2016_Tools.zip
+   tasks:
+   - name: Download artifact test
+     win_get_url:
+       url: your_artifact_url_here/"{{items}}"
+       dest: E:\Support\MS-SQL\
+       url_username: your_username
+       url_password: your_api_key
+   - name: Unzip
+     win_unzip:
+       src: E:\Support\MS-SQL\"{{items}}"
+       dest: E:\Support\MS-SQL\
